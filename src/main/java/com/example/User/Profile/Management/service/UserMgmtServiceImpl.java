@@ -11,10 +11,10 @@ public class UserMgmtServiceImpl implements UserMgmtService{
     @Autowired
     private UserFeatureRepo userFeatureRepo;
 
-    /*@Override
+    @Override
     public ResponseEntity<?> getUsersFeatures(int id) {
-//        userMgmtRepo.find
+
         userFeatureRepo.findByUserId(id);
 
-    }*/
+    }
 }
