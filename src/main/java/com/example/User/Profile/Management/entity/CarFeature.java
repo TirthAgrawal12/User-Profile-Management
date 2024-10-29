@@ -1,43 +1,28 @@
 package com.example.User.Profile.Management.entity;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "car_features")
 @Data
-public class CarFeature {
+public class CarFeature implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long featureId;
+    private Long id;
 
     private String featureName;
 
-    private boolean isSafetyFeature;
-
-    @Enumerated(EnumType.STRING)
-    private FeatureStatus status;
+    private Boolean isSafetyFeature;
 
     @OneToMany(mappedBy = "carFeature", cascade = CascadeType.ALL)
     private List<UserFeatureAccess> userAccess;
 
     // Getters and setters
     // toString, equals, and hashCode methods
-}
-
-enum FeatureStatus {
-    ENABLED,
-    DISABLED
 }
 

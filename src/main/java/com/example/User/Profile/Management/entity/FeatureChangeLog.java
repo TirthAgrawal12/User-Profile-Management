@@ -11,12 +11,13 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "feature_change_log")
 @Data
-public class FeatureChangeLog {
+public class FeatureChangeLog implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,11 +33,11 @@ public class FeatureChangeLog {
 
     private LocalDateTime changeTimestamp;
 
-    @Enumerated(EnumType.STRING)
-    private FeatureStatus oldStatus;
 
-    @Enumerated(EnumType.STRING)
-    private FeatureStatus newStatus;
+    private String oldStatus;
+
+
+    private String newStatus;
 
     // Getters and setters
     // toString, equals, and hashCode methods

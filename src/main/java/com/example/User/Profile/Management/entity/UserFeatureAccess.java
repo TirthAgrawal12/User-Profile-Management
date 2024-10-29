@@ -9,24 +9,26 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name = "user_feature_access")
 @Data
-public class UserFeatureAccess {
+public class UserFeatureAccess implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long accessId;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_profile_id", nullable = false)
     private UserProfile userProfile;
 
     @ManyToOne
-    @JoinColumn(name = "feature_id", nullable = false)
+    @JoinColumn(name = "car_feature_id", nullable = false)
     private CarFeature carFeature;
 
-    private boolean Status;
+    private String Status;
 
     // Getters and setters
     // toString, equals, and hashCode methods
